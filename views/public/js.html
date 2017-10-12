@@ -1,7 +1,10 @@
-<script src="/views/assets/jquery/jquery.min.js"></script>
-<script src="/views/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="/views/assets/nprogress/nprogress.js"></script>
-<script src="/views/assets/echarts/echarts.min.js"></script>
-<script src="/views/assets/jquery-cookie/jquery.cookie.js"></script>
-<script src="/views/assets/artTemplate/template.js"></script>
-<script src="/views/static/js/common.js"></script>
+<!-- 先require包引过来 -->
+<!-- 以下最好都用绝对路径 -->
+<script src="/views/static/lib/require.js"></script>
+<!-- 在引config,config是依附于require的,然后再去config.js里配置路径 -->
+<script src="/views/static/lib/config.js"></script>
+<script>
+//common.js的路径根据baseUrl的路径为基准找
+//baseUrl:'/views/assets'
+	require(['../static/js/common'])
+</script>

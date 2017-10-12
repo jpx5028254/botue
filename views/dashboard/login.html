@@ -34,43 +34,7 @@
 </body>
 </html>
 <script>
-    $(function(){
-        //注册点击事件,因为页面找不到合适的点击元素,按钮元素不好用
-        //按钮的属性是submit,改用表单提交事件
-        $('form').submit(function(){
-            //非空验证
-            if($('input[name=tc_name]').val().trim()==""){
-                alert('请输入用户名');
-                return false;
-            }
-    if($('input[name=tc_pass]').val().trim()==""){
-                alert('请输入密码');
-                return false;
-            }
-
-
-           //获取用户输入的数据,调用表单序列化的方法
-           var data=$(this).serialize();
-          //用户输入的内容发送给接口api进行登录
-        $.ajax({
-            type:'post',
-            url:'/api/login',
-            data:data,
-            success:function(data){
-                //额接口文档中data.code是200的情况下才算请求成功
-               if(data.code==200){
-                    //创建一个cookie并设置 cookie的有效路径：
-                    //$.cookie('cookieName', 'cookieValue', { expires: 365, path: '/' });  
-                    //cookie名,cookie值,保存时间,路径
-                    $.cookie("userinfo",JSON.stringify(data.result),{expires:365,path:'/'});
-                    //登陆成功,则跳转到页面首页
-                    location.href='/';
-               }
-            }
-        })
-
-        //阻止默认事件,不让表单自己提交,因为我们我发送ajax请求
-           return false;
-        })
-    })
+//login.html只要引用login.js,require的路径是相对于baseUrl的路径写的
+//baseUrl:'/views/assets'
+require(['../static/js/dashboard/login'])
 </script>
